@@ -14,7 +14,7 @@ export class CvCubePersp extends CanvasLocal {
         this.graphics.stroke();
     }
     paint() {
-        //Dimension dim = getSize();
+       //Dimension dim = getSize();
         //int maxX = dim.width - 1, maxY = dim.height - 1,
         //let     minMaxXY = Math.min(maxX, maxY);
         //centerX = maxX/2; centerY = maxY/2;
@@ -32,8 +32,8 @@ export class CvCubePersp extends CanvasLocal {
         this.line(7, 4);
         // Vertical edges:
         this.line(0, 4);
-        this.line(1, 5);
-        this.line(2, 6);
+        this.line(1, 7);
+        this.line(2, 7);
         this.line(3, 7);
     }
 }

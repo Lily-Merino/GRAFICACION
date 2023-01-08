@@ -14,10 +14,10 @@ export class Obj {
         this.w[2] = new Point3D(-1, 1, -1);
         this.w[3] = new Point3D(-1, -1, -1);
         // Top surface:
-        this.w[4] = new Point3D(1, -1, 1);
-        this.w[5] = new Point3D(1, 1, 1);
-        this.w[6] = new Point3D(-1, 1, 1);
-        this.w[7] = new Point3D(-1, -1, 1);
+        this.w[4] = new Point3D(-3, -1, 1);
+        this.w[5] = new Point3D(3.2, 1, 2);
+        this.w[6] = new Point3D(3.2, 1, 2);
+        this.w[7] = new Point3D(-3, -1, 1);
         this.objSize = Math.sqrt(12);
         // = sqrt(2  * 2 + 2 * 2 + 2 * 2)
         // = distance between two opposite vertices.
