@@ -95,6 +95,17 @@ function moverbulon() {
     cv.setObj(obj);
     cv.paint();
 }
+function moverbulonotrolado() {
+    var af = -2;
+    timer = af * Math.PI / 180;
+    console.log(timer);
+    Rota3D.initRotate(obj.w[49], obj.w[55], timer);
+    for (var i = 77; i <= 200; i++) {
+        obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();
+}
 function abrircuchara() {
     var af = 15;
     Rota3D.initRotate(obj.w[205], obj.w[206], af * Math.PI / 180);
@@ -117,6 +128,7 @@ function cerrarcuchara() {
 document.getElementById('bajarpluma').addEventListener('click', bajarpluma, false);
 document.getElementById('subirpluma').addEventListener('click', subirpluma, false);
 document.getElementById('moverbulon').addEventListener('click', moverbulon, false);
+document.getElementById('moverbulonotrolado').addEventListener('click', moverbulonotrolado, false);
 document.getElementById('abrircuchara').addEventListener('click', abrircuchara, false);
 document.getElementById('cerrarcuchara').addEventListener('click', cerrarcuchara, false);
 document.getElementById('file-input').addEventListener('change', leerArchivo, false);

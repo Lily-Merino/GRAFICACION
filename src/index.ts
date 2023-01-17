@@ -117,6 +117,18 @@ function moverbulon() {
   cv.paint();
 }
 
+function moverbulonotrolado() {
+  var af = -2;
+  timer = af * Math.PI / 180;
+  console.log(timer);
+  Rota3D.initRotate(obj.w[49], obj.w[55], timer);
+  for (var i =77 ; i <= 200; i++) {
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+  }
+  cv.setObj(obj);
+  cv.paint();
+}
+
 function abrircuchara() {
   let af = 15;
  	
@@ -146,6 +158,7 @@ function cerrarcuchara() {
 document.getElementById('bajarpluma').addEventListener('click', bajarpluma, false);
 document.getElementById('subirpluma').addEventListener('click', subirpluma, false);
 document.getElementById('moverbulon').addEventListener('click', moverbulon, false);
+document.getElementById('moverbulonotrolado').addEventListener('click', moverbulonotrolado, false);
 document.getElementById('abrircuchara').addEventListener('click', abrircuchara, false);
 document.getElementById('cerrarcuchara').addEventListener('click', cerrarcuchara, false);
 
