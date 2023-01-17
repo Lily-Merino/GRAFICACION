@@ -20,6 +20,7 @@ let intTiempo : number;
 let intTimer : number;
 let timer : number;
 
+
 function leerArchivo(e:any) {
   var archivo = e.target.files[0];
   if (!archivo) {
@@ -81,7 +82,7 @@ function decrDistFunc() {
   vp(0, 0, 0.5);
 }
 
-function pza1DerFunc() {
+function subirpluma() {
   let af = 15;
  	
 	Rota3D.initRotate( obj.w[201], obj.w[202], af*Math.PI/180);	
@@ -92,7 +93,7 @@ function pza1DerFunc() {
 	cv.setObj(obj);
   cv.paint();	
 }
-function pza1IzqFunc() {
+function bajarpluma() {
   let af = -15;
  	
 	Rota3D.initRotate( obj.w[201], obj.w[202], af*Math.PI/180);	
@@ -104,16 +105,16 @@ function pza1IzqFunc() {
   cv.paint();	
 }
 
-function bajarpala() {
-  let af = 5;
- 	
-	Rota3D.initRotate( obj.w[203], obj.w[204], af*Math.PI/180);	
-	
-  for (let i =118; i <= 200; i++){
-    obj.w[i] = Rota3D.rotate(obj.w[i]);
-	}
-	cv.setObj(obj);
-  cv.paint();	
+function moverbulon() {
+  var af = 2;
+  timer = af * Math.PI / 180;
+  console.log(timer);
+  Rota3D.initRotate(obj.w[49], obj.w[55], timer);
+  for (var i =77 ; i <= 200; i++) {
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+  }
+  cv.setObj(obj);
+  cv.paint();
 }
 
 function abrircuchara() {
@@ -142,9 +143,9 @@ function cerrarcuchara() {
 }
 
 //movimiento de piezas
-document.getElementById('pza1Izq').addEventListener('click', pza1IzqFunc, false);
-document.getElementById('pza1Der').addEventListener('click', pza1DerFunc, false);
-document.getElementById('bajarpala').addEventListener('click', bajarpala, false);
+document.getElementById('bajarpluma').addEventListener('click', bajarpluma, false);
+document.getElementById('subirpluma').addEventListener('click', subirpluma, false);
+document.getElementById('moverbulon').addEventListener('click', moverbulon, false);
 document.getElementById('abrircuchara').addEventListener('click', abrircuchara, false);
 document.getElementById('cerrarcuchara').addEventListener('click', cerrarcuchara, false);
 

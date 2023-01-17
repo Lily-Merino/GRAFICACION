@@ -1,12 +1,22 @@
-export class Dimension {
-    constructor(w, h) {
+var Dimension = /** @class */ (function () {
+    function Dimension(w, h) {
         this._width = w;
         this._height = h;
     }
-    get width() {
-        return this._width;
-    }
-    get height() {
-        return this._height;
-    }
-}
+    Object.defineProperty(Dimension.prototype, "width", {
+        get: function () {
+            return this._width;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Dimension.prototype, "height", {
+        get: function () {
+            return this._height;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Dimension;
+}());
+export { Dimension };

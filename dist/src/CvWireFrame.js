@@ -1,23 +1,23 @@
 import { Dimension } from './Dimension.js';
-export class CvWireframe {
-    constructor(g, canvas) {
+var CvWireframe = /** @class */ (function () {
+    function CvWireframe(g, canvas) {
         this.g = g;
         this.canvas = canvas;
     }
-    getObj() { return this.obj; }
-    setObj(obj) { this.obj = obj; }
-    iX(x) { return Math.round(this.centerX + x - this.imgCenter.x); }
-    iY(y) { return Math.round(this.centerY - y + this.imgCenter.y); }
-    paint() {
+    CvWireframe.prototype.getObj = function () { return this.obj; };
+    CvWireframe.prototype.setObj = function (obj) { this.obj = obj; };
+    CvWireframe.prototype.iX = function (x) { return Math.round(this.centerX + x - this.imgCenter.x); };
+    CvWireframe.prototype.iY = function (y) { return Math.round(this.centerY - y + this.imgCenter.y); };
+    CvWireframe.prototype.paint = function () {
         if (this.obj == undefined)
             return;
-        let polyList = this.obj.getPolyList();
+        var polyList = this.obj.getPolyList();
         if (polyList == undefined)
             return;
-        let nFaces = polyList.length;
+        var nFaces = polyList.length;
         if (nFaces == 0)
             return;
-        let dim = new Dimension(this.canvas.width, this.canvas.height);
+        var dim = new Dimension(this.canvas.width, this.canvas.height);
         this.canvas.width = this.canvas.width;
         this.maxX = dim.width - 1;
         this.maxY = dim.height - 1;
@@ -38,28 +38,30 @@ export class CvWireframe {
         // Computation of eye and screen coordinates.
         this.imgCenter = this.obj.getImgCenter();
         this.obj.planeCoeff(); // Compute a, b, c and h.
-        let e = this.obj.getE();
-        let vScr = this.obj.getVScr();
+        var e = this.obj.getE();
+        var vScr = this.obj.getVScr();
         //g.setColor(Color.black);
-        for (let j = 0; j < nFaces; j++) {
-            let pol = polyList[j];
-            let nrs = pol.getNrs();
+        for (var j = 0; j < nFaces; j++) {
+            var pol = polyList[j];
+            var nrs = pol.getNrs();
             if (nrs.length < 3)
                 continue;
-            for (let iA = 0; iA < nrs.length; iA++) {
-                let iB = (iA + 1) % nrs.length;
-                let na = Math.abs(nrs[iA]), nb = Math.abs(nrs[iB]);
+            for (var iA = 0; iA < nrs.length; iA++) {
+                var iB = (iA + 1) % nrs.length;
+                var na = Math.abs(nrs[iA]), nb = Math.abs(nrs[iB]);
                 // abs in view of minus signs discussed in Section 6.4.
-                let a = vScr[na], b = vScr[nb];
+                var a = vScr[na], b = vScr[nb];
                 this.drawLine(this.g, this.iX(a.x), this.iY(a.y), this.iX(b.x), this.iY(b.y));
             }
         }
-    }
-    drawLine(g, x1, y1, x2, y2) {
+    };
+    CvWireframe.prototype.drawLine = function (g, x1, y1, x2, y2) {
         g.beginPath();
         g.moveTo(x1, y1);
         g.lineTo(x2, y2);
         g.closePath();
         g.stroke();
-    }
-}
+    };
+    return CvWireframe;
+}());
+export { CvWireframe };

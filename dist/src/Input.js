@@ -1,12 +1,12 @@
-export class Input {
-    constructor(file) {
+var Input = /** @class */ (function () {
+    function Input(file) {
         this.index = 0;
         this.ok = true;
         this.eoFile = false;
         this.pbis = file;
     }
-    readChar() {
-        let ch;
+    Input.prototype.readChar = function () {
+        var ch;
         try {
             ch = this.pbis.charAt(this.index++);
             if (this.index > this.pbis.length) {
@@ -18,25 +18,25 @@ export class Input {
             this.ok = false;
         }
         return ch;
-    }
-    isWhiteSpace(ch) {
+    };
+    Input.prototype.isWhiteSpace = function (ch) {
         return (ch == ' ');
-    }
-    isEmpty(ch) {
+    };
+    Input.prototype.isEmpty = function (ch) {
         return (ch.trim() == "");
-    }
-    isEnter(ch) {
+    };
+    Input.prototype.isEnter = function (ch) {
         return (ch == '\n' || ch == '\r');
-    }
-    isDigit(ch) {
+    };
+    Input.prototype.isDigit = function (ch) {
         return (ch >= '0' && ch <= '9');
-    }
-    pushBack() {
+    };
+    Input.prototype.pushBack = function () {
         this.index--;
-    }
-    readInt() {
-        let neg = false;
-        let ch;
+    };
+    Input.prototype.readInt = function () {
+        var neg = false;
+        var ch;
         do {
             ch = this.readChar();
         } while (this.isWhiteSpace(ch) || this.isEnter(ch));
@@ -49,7 +49,7 @@ export class Input {
             this.ok = false;
             return 0;
         }
-        let x = Number(ch);
+        var x = Number(ch);
         for (;;) {
             ch = this.readChar();
             if (!this.isDigit(ch)) {
@@ -59,11 +59,11 @@ export class Input {
             x = 10 * x + Number(ch);
         }
         return (neg ? -x : x);
-    }
-    readFloat() {
-        let ch;
-        let nDec = -1;
-        let neg = false;
+    };
+    Input.prototype.readFloat = function () {
+        var ch;
+        var nDec = -1;
+        var neg = false;
         do {
             ch = this.readChar();
         } while (this.isWhiteSpace(ch));
@@ -80,7 +80,7 @@ export class Input {
             this.pushBack();
             return 0;
         }
-        let x = Number(ch);
+        var x = Number(ch);
         for (;;) {
             ch = this.readChar();
             if (this.isDigit(ch)) {
@@ -98,7 +98,7 @@ export class Input {
             nDec--;
         }
         if (ch == 'e' || ch == 'E') {
-            let exp = this.readInt();
+            var exp = this.readInt();
             if (!this.fails()) {
                 while (exp < 0) {
                     x *= 0.1;
@@ -113,25 +113,25 @@ export class Input {
         else
             this.pushBack();
         return (neg ? -x : x);
-    }
-    skipRest() {
-        let ch;
+    };
+    Input.prototype.skipRest = function () {
+        var ch;
         do {
             ch = this.readChar();
         } while (!(this.eof() || ch == '\n'));
-    }
-    fails() {
+    };
+    Input.prototype.fails = function () {
         return !this.ok;
-    }
-    eof() {
+    };
+    Input.prototype.eof = function () {
         return this.eoFile;
-    }
-    clear() {
+    };
+    Input.prototype.clear = function () {
         this.ok = true;
-    }
-    readString() {
-        let str = " ";
-        let ch;
+    };
+    Input.prototype.readString = function () {
+        var str = " ";
+        var ch;
         do {
             ch = this.readChar();
         } while (!(this.eof() || ch == '"'));
@@ -143,5 +143,7 @@ export class Input {
             str += ch;
         }
         return str;
-    }
-}
+    };
+    return Input;
+}());
+export { Input };
