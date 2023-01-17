@@ -81,6 +81,73 @@ function decrDistFunc() {
   vp(0, 0, 0.5);
 }
 
+function pza1DerFunc() {
+  let af = 15;
+ 	
+	Rota3D.initRotate( obj.w[201], obj.w[202], af*Math.PI/180);	
+	
+  for (let i = 77; i <= 200; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();	
+}
+function pza1IzqFunc() {
+  let af = -15;
+ 	
+	Rota3D.initRotate( obj.w[201], obj.w[202], af*Math.PI/180);	
+	
+  for (let i = 77; i <= 200; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();	
+}
+
+function bajarpala() {
+  let af = 5;
+ 	
+	Rota3D.initRotate( obj.w[203], obj.w[204], af*Math.PI/180);	
+	
+  for (let i =118; i <= 200; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();	
+}
+
+function abrircuchara() {
+  let af = 15;
+ 	
+	Rota3D.initRotate( obj.w[205], obj.w[206], af*Math.PI/180);	
+	
+  for (let i =179; i <= 200; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();	
+}
+
+
+function cerrarcuchara() {
+  let af = -15;
+ 	
+	Rota3D.initRotate( obj.w[205], obj.w[206], af*Math.PI/180);	
+	
+  for (let i =179; i <= 200; i++){
+    obj.w[i] = Rota3D.rotate(obj.w[i]);
+	}
+	cv.setObj(obj);
+  cv.paint();
+}
+
+//movimiento de piezas
+document.getElementById('pza1Izq').addEventListener('click', pza1IzqFunc, false);
+document.getElementById('pza1Der').addEventListener('click', pza1DerFunc, false);
+document.getElementById('bajarpala').addEventListener('click', bajarpala, false);
+document.getElementById('abrircuchara').addEventListener('click', abrircuchara, false);
+document.getElementById('cerrarcuchara').addEventListener('click', cerrarcuchara, false);
+
 
 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
 document.getElementById('eyeDown').addEventListener('click', eyeDownFunc, false);
